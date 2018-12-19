@@ -4,13 +4,15 @@ import (
 	"testing"
 	"datagrand/recommend"
 	"fmt"
+	"encoding/json"
 )
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  * 测试上传数据到达观
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 func TestGetSensorsData(t *testing.T) {
-	r := recommend.NewRecommend()
+	r := recommend.NewRecommend("http://datareportapi.datagrand.com/data/", "your_app_name", "your_app_id")
+
 	request := &recommend.RecommendRequest{
 		AppId:     999,
 		TableName: recommend.ITEM,
@@ -37,10 +39,13 @@ func TestGetSensorsData(t *testing.T) {
 			},
 		},
 	}
-	result, err := r.Upload(request)
-	fmt.Println(&result, err)
-}
+	requestJson, _ := json.Marshal(request)
+	fmt.Println("request is ", string(requestJson))
 
-func A(t *testing.T) {
-	t.Name()
+	result, err := r.Upload(request)
+
+	responseJson, _ := json.Marshal(result)
+	fmt.Println("result is ", string(responseJson))
+
+	fmt.Println(result, err)
 }

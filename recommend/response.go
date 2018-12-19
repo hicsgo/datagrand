@@ -4,9 +4,9 @@ package recommend
  * 达观输出参数说明
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 type RecommendResponse struct {
-	Status    string          `form:"status" json:"status"`         //返回状态
-	Errors    *RecommendError `form:"errors" json:"errors"`         //返回错误code和message
-	RequestId string          `form:"request_id" json:"request_id"` //本次请求Id(排错)
+	Status    string            `form:"status" json:"status"`         //返回状态
+	Errors    []*RecommendError `form:"errors" json:"errors"`         //返回错误code和message
+	RequestId int64             `form:"request_id" json:"request_id"` //本次请求Id(排错)
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

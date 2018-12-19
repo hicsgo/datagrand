@@ -9,15 +9,19 @@ import (
  * 达观智能推荐模块
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 type recommend struct {
+	prefixUrl string
+	appName   string
+	appid     string
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  * 上报数据到达观
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 func (r *recommend) Upload(request *RecommendRequest) (resp *RecommendResponse, err error) {
-	url := "http://datareportapi.datagrand.com/data/YOUR_APP_NAME"
 	recommendResult := RecommendResponse{}
+	url := r.prefixUrl + r.appName
 	result, err := glib.HttpPostJson(url, request)
+
 	if err == nil {
 		err = json.Unmarshal(result, &recommendResult)
 		if err == nil {
@@ -37,7 +41,10 @@ func (r *recommend) GetDataFromDatagrand() {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  * 新建推荐实例
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-func NewRecommend() *recommend {
+func NewRecommend(prefixUrl, appname, appid string) *recommend {
 	r := new(recommend)
+	r.prefixUrl = prefixUrl
+	r.appName = appname
+	r.appid = appid
 	return r
 }
