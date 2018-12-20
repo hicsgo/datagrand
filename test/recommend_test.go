@@ -11,7 +11,7 @@ import (
  * 测试上传数据到达观
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 func TestGetSensorsData(t *testing.T) {
-	r := recommend.NewRecommend("http://datareportapi.datagrand.com/data/", "your_app_name", "your_app_id")
+	r := recommend.NewRecommend("http://datareportapi.datagrand.com/data/", "your_app_name", 0)
 
 	request := &recommend.RecommendRequest{
 		AppId:     999,

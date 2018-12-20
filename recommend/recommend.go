@@ -11,7 +11,7 @@ import (
 type recommend struct {
 	prefixUrl string
 	appName   string
-	appid     string
+	appid    int64
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -41,7 +41,7 @@ func (r *recommend) GetDataFromDatagrand() {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  * 新建推荐实例
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-func NewRecommend(prefixUrl, appname, appid string) *recommend {
+func NewRecommend(prefixUrl, appname string ,appid int64) *recommend {
 	r := new(recommend)
 	r.prefixUrl = prefixUrl
 	r.appName = appname
