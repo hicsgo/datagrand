@@ -18,5 +18,5 @@ type Item struct {
 	Province       string `form:"province" json:"province"`                 //如果有地域相关需求，有则上报	item所属的地域信息，这里指省级地域，如江苏省、广东省等
 	City           string `form:"city" json:"city"`                         //如果有地域相关需求，有则上报	item所属的地域信息，这里指市级地域，如苏州市、杭州市等/
 	Extend         string `form:"extend" json:"extend"`                     //自定义扩展字段
-	Is_New         string `form:"is_new" json:"is_new"`                     //是否最新
+	Is_New         int64 `form:"is_new" json:"is_new"`                     //是否最新
 }
